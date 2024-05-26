@@ -1,0 +1,103 @@
+{
+    "html_attributions": [],
+    "results": [
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "\u0397 \u03b5\u03af\u03c3\u03bf\u03b4\u03bf\u03c2 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c0\u03cc \u03c4\u03b7\u03bd \u03bb\u03b5\u03c9\u03c6 \u0394\u03b7\u03bc\u03bf\u03ba\u03c1\u03b1\u03c4\u03af\u03b1\u03c2 \u03b5\u03ba\u03b5\u03af \u03c0\u03bf\u03c5 \u03b5\u03af\u03bd\u03b1\u03b9 \u03bf\u03b9 \u03ba\u03b1\u03c6\u03b5\u03c4\u03ad\u03c1\u03b9\u03b5\u03c2, Marias Kiouri 24, Keratsini 187 56, Greece",
+            "geometry": {
+                "location": {
+                    "lat": 37.9575933,
+                    "lng": 23.6268883
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 37.95891597989272,
+                        "lng": 23.62821307989272
+                    },
+                    "southwest": {
+                        "lat": 37.95621632010728,
+                        "lng": 23.62551342010727
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#7B9EB0",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "\u039c\u03b5\u03c4\u03b1\u03b2\u03bf\u03bb\u03af\u03b6\u03b5\u03b9\u03bd- \u0394\u03b9\u03b1\u03b9\u03c4\u03bf\u03bb\u03bf\u03b3\u03b9\u03ba\u03cc \u0393\u03c1\u03b1\u03c6\u03b5\u03af\u03bf \u03c3\u03c4\u03bf \u039a\u03b5\u03c1\u03b1\u03c4\u03c3\u03af\u03bd\u03b9",
+            "photos": [
+                {
+                    "height": 4160,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/110894871478782969018\">A Google User</a>"
+                    ],
+                    "photo_reference": "AWU5eFg3Wgk7xqw8wPk8w5IrAp2xCXmQECjLXvrheJQQolc_X34_Hp7k5xUX0WV6VCYci_mHo3hl3ige0GSohMJc7wO9RsrDSLGTJ4sj4-K2cV9HroiskFDv4zG8vTAKP8Cagb4lifnm38Au22Nz76xQRe3rGdBf3F_jH3cYHfhNHHX6MSb3",
+                    "width": 3120
+                }
+            ],
+            "place_id": "ChIJ1_SEMbS7oRQRN2V2-P0qgIs",
+            "plus_code": {
+                "compound_code": "XJ5G+2Q Keratsini",
+                "global_code": "8G95XJ5G+2Q"
+            },
+            "rating": 5,
+            "reference": "ChIJ1_SEMbS7oRQRN2V2-P0qgIs",
+            "types": [
+                "point_of_interest",
+                "health",
+                "establishment"
+            ],
+            "user_ratings_total": 44
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Topali 89-91, Volos 382 21, Greece",
+            "geometry": {
+                "location": {
+                    "lat": 39.362036,
+                    "lng": 22.9486278
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 39.36339622989273,
+                        "lng": 22.94998802989272
+                    },
+                    "southwest": {
+                        "lat": 39.36069657010728,
+                        "lng": 22.94728837010728
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#7B9EB0",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Metavolizein - Papoutsi Ioulia",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 720,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/106437032632963052856\">\u039c\u03b5\u03c4\u03b1\u03b2\u03bf\u03bb\u03af\u03b6\u03b5\u03b9\u03bd - \u03a0\u03b1\u03c0\u03bf\u03c5\u03c4\u03c3\u03ae \u0399\u03bf\u03c5\u03bb\u03af\u03b1</a>"
+                    ],
+                    "photo_reference": "AWU5eFjcFfXPUJ3H53Qf9qG06L98ZeulsLuM47GBkx3c5LOFSpLCxqr3YHQ9hYbLJ8jMm0nQaLCyxFiqVx0kcAvPVp9Efv8f1plR3PaOGrD5tOLU1H73yakiOiQWFzfzcboEM1q8bvb0CB_jJSwYf3MIWMTk2cWlUMD1nF36ndBldId0IN2R",
+                    "width": 540
+                }
+            ],
+            "place_id": "ChIJP8_GdmNspxQRNWne0e84p34",
+            "plus_code": {
+                "compound_code": "9W6X+RF Volos",
+                "global_code": "8GF49W6X+RF"
+            },
+            "rating": 4.9,
+            "reference": "ChIJP8_GdmNspxQRNWne0e84p34",
+            "types": [
+                "point_of_interest",
+                "health",
+                "establishment"
+            ],
+            "user_ratings_total": 29
+        }
+    ],
+    "status": "OK"
+}
