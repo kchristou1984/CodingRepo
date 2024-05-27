@@ -9,7 +9,7 @@ public class Library {
 
 
     public void addBook(String ISBN, String title, String author, String genre, String position){
-        bookList.add(new Book(ISBN,title,author,genre,position));
+        bookList.add(new Book(ISBN,title,author,genre,position,lendedCount));
     }
 
     public void addReader(String afm,String name,int age,String category){
@@ -17,6 +17,7 @@ public class Library {
     }
     public void lendBook(Book book){
         lendedBookList.add(Book book);
+        lendCount += 1;
     }
 
     public void returnBook(){
