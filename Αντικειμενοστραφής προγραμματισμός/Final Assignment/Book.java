@@ -6,10 +6,10 @@ public class Book {
     private String author;
     private String genre;
     private String position;
-    int lendCount;
+    private int lendCount;
 
     //Να προσθέσω και ιδιότητα για το count των δανεισμών σε κάθε βιβλίο τύπου int lendCount = 0 και να γίνεται +1 κάθε φορά που καλείται η lendBook()
-    public Book(String ISBN, String title, String author, String genre,String position, int lendCount){
+    public Book(String ISBN, String title, String author, String genre,String position){
         this.ISBN = ISBN;
         this.title = title;
         this.author = author;
@@ -56,6 +56,14 @@ public class Book {
 
     public void setPosition(String position){
         this.position = position;
+    }
+
+    public int getLendCount(){
+        return lendCount;
+    }
+
+    public void lendBook(){
+        lendCount++;
     }
 
     @Override

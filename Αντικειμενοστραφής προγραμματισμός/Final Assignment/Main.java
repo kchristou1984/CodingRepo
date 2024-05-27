@@ -25,6 +25,13 @@ public class Main {
         for (Reader reader : library.readerList) {
             System.out.println(reader);
         }
+
+        library.lendBook("0156907399");
+        library.lendBook("015690");
+        library.printLendedBooks();
+        library.lendBookJournal();
+        library.lendBook("0156907399");
+        library.lendBookJournal();
     }
     
 }
