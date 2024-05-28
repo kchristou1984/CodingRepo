@@ -18,20 +18,23 @@ public class Main {
         library.addBook("0143107631", "Crime and Punishment", "Fyodor Dostoevsky", "Literature", "J1046");
         library.addReader("133751036", "Kostas Christou", 39 , "Student  ");
 
-        for (Book book : library.bookList) {
-            System.out.println(book);
-        }
+        // for (Book book : library.bookList) {
+        //     System.out.println(book);
+        // }
 
-        for (Reader reader : library.readerList) {
-            System.out.println(reader);
-        }
+        // for (Reader reader : library.readerList) {
+        //     System.out.println(reader);
+        // }
 
-        library.lendBook("0156907399");
-        library.lendBook("015690");
-        library.printLendedBooks();
-        library.lendBookJournal();
-        library.lendBook("0156907399");
-        library.lendBookJournal();
+        // library.lendBook("0156907399");
+        // library.lendBook("015690");
+        // library.printLendedBooks();
+        // library.lendBookJournal();
+        // library.lendBook("0156907399");
+        // library.lendBook("01faw5699");
+        // library.lendBookJournal();
+        
+        //library.lendBookJournal();
     }
     
 }
