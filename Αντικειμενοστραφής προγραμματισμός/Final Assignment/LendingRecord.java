@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class LendingRecord {
     private Book book;
@@ -13,8 +13,12 @@ public class LendingRecord {
         this.returnDate = null;
     }
 
-    ArrayList<LendingRecord> lendingRecordList = new ArrayList<LendingRecord>();
+    
 
+    @Override
+    public String toString(){
+        return "Book title: " + book.getTitle() + "\n" + "Reader: " + reader.getName() + "\n"+ "Date Lended: " + getLendingDate() + "\n";
+    }
 
 
     public Book getBook() {

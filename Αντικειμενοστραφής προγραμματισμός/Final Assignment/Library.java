@@ -6,6 +6,7 @@ public class Library {
     static ArrayList<Book> bookList = new ArrayList<Book>();
     ArrayList<Reader> readerList = new ArrayList<Reader>();
     ArrayList<Book> lendedBookList = new ArrayList<Book>();
+    ArrayList<LendingRecord> lendingRecordList = new ArrayList<LendingRecord>();
 
 
     public void addBook(String ISBN, String title, String author, String genre, String position){
@@ -49,22 +50,41 @@ public class Library {
     //     }
        
 
-        public void lendBook(Book book, Reader reader, Date lendingDate){
-        if (bookList.contains(book)){
-            if (lendedBookList.contains(book)==false){
-                lendedBookList.add(book);
-                book.lendBook();
-                LendingRecord lendingRecord = new LendingRecord(book, reader, lendingDate);
-                lendingRecord.lendingRecordList.add(lendingRecord);
-                System.out.println(book.getTitle() + " has been lent succesfully");
-                return;
-            } else{
-                System.out.println(book.getTitle() + " is lent");
-                return;
+        public void lendBook(String ISBN, String name, Date lendingDate){
+        Book bookToLend = null;
+
+        for (Book book : bookList){
+            if (book.getISBN().equals(ISBN)){
+                if (lendedBookList.contains(book)==false){
+                    // System.out.println(book.getTitle() + " has been lent succesfully");
+                    bookToLend = book;
+                    break;
+                } 
+                else{
+                    System.out.println(book.getTitle() + " is lent");
+                    break;
+                }
+            } 
+        } if (bookToLend == null){
+            System.out.println("Book not found...");
+        }
+            
+    Reader readerLending = null;
+            for (Reader reader:readerList){
+                if (reader.getName().equals(name)){
+                    readerLending = reader;
+                    lendedBookList.add(bookToLend);
+                    bookToLend.lendBook();
+                    LendingRecord lendingRecord = new LendingRecord(bookToLend, readerLending, lendingDate);
+                    lendingRecordList.add(lendingRecord);
+                    System.out.println(bookToLend.getTitle() + " succesfully registered to " + readerLending.getName());
+                } else{
+                    System.out.println("Reader not found...");
+                }
             }
-        } System.out.println("Book not found...");
-        } 
-    
+
+
+        }
 
     
     public void returnBook(){
