@@ -87,9 +87,18 @@ public class Library {
         }
 
     
-    public void returnBook(){
-
+    public void returnBook(String ISBN){
+        Book bookToReturn = null;
+        for (Book book : lendedBookList){
+            if (ISBN.equals(book.getISBN())){
+                bookToReturn = book;
+                lendedBookList.remove(bookToReturn);
+                System.out.println(book.getTitle() + " returned succesfully..." );
+                break;
+            }
+        }
     }
+
     public void printLendedBooks(){
         for(Book book:lendedBookList){
             System.out.println(book);

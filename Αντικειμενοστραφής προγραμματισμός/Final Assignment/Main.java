@@ -32,14 +32,16 @@ public class Main {
         // library.lendBookJournal();
         Date lenginDate = new Date(19,4,2024);
         library.lendBook("059035342X","Kostas Christou",lenginDate);
-        library.lendBook("0743273567", "Ioulia Papoutsi", lenginDate);
+        // library.lendBook("0743273567", "Ioulia Papoutsi", lenginDate);
+        library.returnBook("059035342X");
         
         
 
 
-        library.lendBookJournal("059035342X");
+        // library.lendBookJournal("059035342X");
         library.lendBookJournal("0156907399");
         library.lendBookJournal("0743273567");
+        library.printLendedBooks();
     }
     
 }
