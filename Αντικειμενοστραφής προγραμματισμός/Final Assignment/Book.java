@@ -68,7 +68,7 @@ public class Book {
 
     @Override
     public String toString(){
-        return "ISBN: " + ISBN +"\n" + "Title: " +  title +"\n"+ "Author: " + author + "\n"+ "Genre: " + genre + "\n"+ "Library Position:" + position+ "\n";
+        return "ISBN: " + ISBN +"\n" + "Title: " +  title +"\n"+ "Author: " + author + "\n"+ "Genre: " + genre + "\n"+ "Library Position:" + position+ "\n" + "Lended " + lendCount + " times" + "\n";
     }
 
 

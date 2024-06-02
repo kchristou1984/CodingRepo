@@ -96,11 +96,28 @@ public class Library {
         }
     }
 
-    public void lendBookJournal(){
+    public void lendBookJournal(String ISBN){
+        boolean found = false;
         for (Book book : bookList){
-            System.out.println("Book " + book.getTitle() + " registered "+ book.getLendCount() + " times.");
+            if (ISBN.equals(book.getISBN())){
+                found = true;
+                boolean recordFound = false;
+                for (LendingRecord lendingRecord : lendingRecordList){
+                    if (lendingRecord.getBook().getISBN().equals(ISBN)){
+                    recordFound = true;
+                    System.out.println("---------------------------");
+                    System.out.println(lendingRecord.getBook().getTitle());
+                    System.out.println("Lended by " + lendingRecord.getReader().getName() + " on " + lendingRecord.getLendingDate());
+                    System.out.println("---------------------------");
+                    } 
+                }  if(!recordFound){
+                    System.out.println("Book hasn't been lended yet");  
+                    } break;
+            }      //Να βάλω πότε δανείστηκε και από ποιον μάλλον από το lendingRecord
+        } if (!found){
+            System.out.println("Book not found...");
         }
-    }
+    } 
 
     public void printLendReaderJournal(){
 

@@ -17,10 +17,7 @@ public class Main {
         library.addBook("0544003411", "The Lord of the Rings", "J.R.R. Tolkien", "Fantasy", "I935");
         library.addBook("0143107631", "Crime and Punishment", "Fyodor Dostoevsky", "Literature", "J1046");
         library.addReader("133751036", "Kostas Christou", 39 , "Student");
-
-        // for (Book book : library.bookList) {
-        //     System.out.println(book);
-        // }
+        library.addReader("1321582", "Ioulia Papoutsi", 39 , "Student");
 
         // for (Reader reader : library.readerList) {
         //     System.out.println(reader);
@@ -35,10 +32,14 @@ public class Main {
         // library.lendBookJournal();
         Date lenginDate = new Date(19,4,2024);
         library.lendBook("059035342X","Kostas Christou",lenginDate);
-        // library.lendBookJournal();
-        for (LendingRecord lendingRecord : library.lendingRecordList){
-            System.out.println(lendingRecord);
-        }
+        library.lendBook("0743273567", "Ioulia Papoutsi", lenginDate);
+        
+        
+
+
+        library.lendBookJournal("059035342X");
+        library.lendBookJournal("0156907399");
+        library.lendBookJournal("0743273567");
     }
     
 }
