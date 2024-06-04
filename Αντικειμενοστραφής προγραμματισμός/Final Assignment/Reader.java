@@ -5,12 +5,14 @@ public class Reader{
     private String name;
     private int age;
     private String category;
+    private int readerLendCount;
 
     public Reader(String afm, String name, int age, String category){
         this.afm = afm;
         this.name = name;
         this.age = age;
         this.category = category;
+        this.readerLendCount = 0;
     }
 
     public String getAfm() {
@@ -43,6 +45,14 @@ public class Reader{
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getReaderLendCount(){
+        return readerLendCount;
+    }
+
+    public void readerLendBook(){
+        readerLendCount++;
     }
 
     @Override

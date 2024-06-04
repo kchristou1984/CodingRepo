@@ -30,18 +30,32 @@ public class Main {
         // library.lendBook("0156907399");
         // library.lendBook("01faw5699");
         // library.lendBookJournal();
-        Date lenginDate = new Date(19,4,2024);
-        library.lendBook("059035342X","Kostas Christou",lenginDate);
-        // library.lendBook("0743273567", "Ioulia Papoutsi", lenginDate);
-        library.returnBook("059035342X");
+        // Date lenginDate = new Date(19,4,2024);
+        library.lendBook("059035342X","Kostas Christou","22/5/2024");
+        library.lendBook("0743273567", "Ioulia Papoutsi", "22/5/2024");
+        // library.printLendedBooks();
+        library.returnBook("059035342X","25/6/2024");
+        library.lendBook("059035342X","Ioulia Papoutsi","3/6/2024");
+        library.lendBook("059035342X","Kostas Christou","3/6/2024");
+        library.lendBook("0451524934","Kostas Christou","3/6/2024");
+        library.returnBook("059035342X","27/6/2024");
+        // library.printLendedBooks();
         
-        
-
-
+        library.printLendReaderJournal("133751036");
         // library.lendBookJournal("059035342X");
-        library.lendBookJournal("0156907399");
-        library.lendBookJournal("0743273567");
-        library.printLendedBooks();
+        
+        library.findBestBooks(Library.bookList);
+        library.findBestReaders(Library.readerList);
+
+
+        // // library.lendBookJournal("059035342X");
+        // library.lendBookJournal("0156907399");
+        // library.lendBookJournal("0743273567");
+        // library.printLendedBooks();
+
+        // for (LendingRecord lendingRecord:library.lendingRecordList){
+        //     System.out.println(lendingRecord);
+        // }
     }
     
 }

@@ -1,10 +1,12 @@
 import java.util.*;
 
+
+
 public class Library {
 
 
     static ArrayList<Book> bookList = new ArrayList<Book>();
-    ArrayList<Reader> readerList = new ArrayList<Reader>();
+    static ArrayList<Reader> readerList = new ArrayList<Reader>();
     ArrayList<Book> lendedBookList = new ArrayList<Book>();
     ArrayList<LendingRecord> lendingRecordList = new ArrayList<LendingRecord>();
 
@@ -31,26 +33,9 @@ public class Library {
         System.out.println("Reader " + name + " registered succesfully...");
 
     }
+      
 
-    // public void lendBook(String ISBN){
-
-    //     for (Book book : bookList){
-    //         if (book.getISBN().equals(ISBN)){
-    //             if (lendedBookList.contains(book)==false){
-    //                 lendedBookList.add(book);
-    //                 book.lendBook();
-    //                 System.out.println(book.getTitle() + " has been lent succesfully");
-    //                 return;
-    //             } else{
-    //                 System.out.println(book.getTitle() + " is lent");
-    //                 return;
-    //             }
-    //         } 
-    //         } System.out.println("Book not found...");
-    //     }
-       
-
-        public void lendBook(String ISBN, String name, Date lendingDate){
+    public void lendBook(String ISBN, String name, String lendingDate){
         Book bookToLend = null;
 
         for (Book book : bookList){
@@ -58,45 +43,64 @@ public class Library {
                 if (lendedBookList.contains(book)==false){
                     // System.out.println(book.getTitle() + " has been lent succesfully");
                     bookToLend = book;
-                    break;
+                    
                 } 
                 else{
                     System.out.println(book.getTitle() + " is lent");
-                    break;
-                }
+                    return;
+                } break;
             } 
         } if (bookToLend == null){
             System.out.println("Book not found...");
+            return;
         }
             
-    Reader readerLending = null;
-            for (Reader reader:readerList){
-                if (reader.getName().equals(name)){
-                    readerLending = reader;
-                    lendedBookList.add(bookToLend);
-                    bookToLend.lendBook();
-                    LendingRecord lendingRecord = new LendingRecord(bookToLend, readerLending, lendingDate);
-                    lendingRecordList.add(lendingRecord);
-                    System.out.println(bookToLend.getTitle() + " succesfully registered to " + readerLending.getName());
-                } else{
-                    System.out.println("Reader not found...");
-                }
-            }
-
-
+        Reader readerLending = null;
+        for (Reader reader:readerList){
+            if (reader.getName().equals(name)){
+                readerLending = reader;
+                break;
+            } 
+        }
+        if(readerLending==null){
+            System.out.println("Reader not found...");
+            return;
         }
 
+        lendedBookList.add(bookToLend);
+        bookToLend.lendBook();
+        readerLending.readerLendBook();
+        LendingRecord lendingRecord = new LendingRecord(bookToLend, readerLending, lendingDate);
+        lendingRecordList.add(lendingRecord);
+        System.out.println(bookToLend.getTitle() + " succesfully registered to " + readerLending.getName());
+
+    }
+
     
-    public void returnBook(String ISBN){
+    public void returnBook(String ISBN, String returnDate){
         Book bookToReturn = null;
         for (Book book : lendedBookList){
             if (ISBN.equals(book.getISBN())){
                 bookToReturn = book;
-                lendedBookList.remove(bookToReturn);
-                System.out.println(book.getTitle() + " returned succesfully..." );
                 break;
+                
             }
+        } 
+        if (bookToReturn==null){
+            System.out.println("Book not found in lended books");
+            return;
         }
+        for (LendingRecord lendingRecord : lendingRecordList){
+            if (lendingRecord.getBook().getISBN().equals(ISBN) && lendingRecord.getReturnDate()==null){
+                lendingRecord.setReturnDate(returnDate);
+                lendedBookList.remove(bookToReturn);
+                System.out.println(bookToReturn.getTitle() + " returned succesfully..." );
+                return;
+            }
+        } System.out.println("Book not found in lended books");
+        
+        
+        
     }
 
     public void printLendedBooks(){
@@ -128,15 +132,41 @@ public class Library {
         }
     } 
 
-    public void printLendReaderJournal(){
+    public void printLendReaderJournal(String afm){
+        boolean found = false;
+        for (Reader reader : readerList){
+            if (afm.equals(reader.getAfm())){
+                found = true;
+                boolean recordFound = false;
+                for (LendingRecord lendingRecord : lendingRecordList){
+                    if (lendingRecord.getReader().getAfm().equals(afm)){
+                    recordFound = true;
+                    System.out.println("---------------------------");
+                    System.out.println(lendingRecord.getReader().getName() + " Lending Journal");
+                    System.out.println(lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + "\n" + lendingRecord.getLendingDate()  + "\n" + "Return Date: " + "\n" + lendingRecord.getReturnDate() );
+                    System.out.println("---------------------------");
+                    } 
+                }  if(!recordFound){
+                    System.out.println("Reader hasn't lended a book yet");  
+                    } break;
+            }      //Να βάλω πότε δανείστηκε και από ποιον μάλλον από το lendingRecord
+        } if (!found){
+            System.out.println("Reader not found...");
+        }
+    } 
 
+
+    public void findBestReaders(ArrayList<Reader> list){
+        Collections.sort(list, Comparator.comparing(Reader::getReaderLendCount));
+        Reader r1 = list.get(list.size()-1);
+        System.out.println("The reader that has read the most books is: " + r1.getName() + " who has read " + r1.getReaderLendCount() + " books");
     }
 
-    public void findBestReaders(){
+    public void findBestBooks(ArrayList<Book> list){
 
-    }
-
-    public void  findBestBooks(){
-
+        Collections.sort(list, Comparator.comparing(Book::getLendCount));
+        Book b1 = list.get(list.size()-1);
+        System.out.println("The book that has been rented more times is: " + b1.getTitle() + " that has been rented " + b1.getLendCount() + " times.");
+    
     }
 }
