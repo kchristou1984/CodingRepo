@@ -1,4 +1,8 @@
-// import java.util.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
 
 public class Main {
 
@@ -56,6 +60,60 @@ public class Main {
         // for (LendingRecord lendingRecord:library.lendingRecordList){
         //     System.out.println(lendingRecord);
         // }
+
+
+        JFrame f = new JFrame("Library Management");
+        JPanel p = new JPanel();
+        JLabel l= new JLabel();
+
+        JButton b1 = new JButton("Reader Journal");
+        JButton b2 = new JButton("Book Journal");
+        JButton b3 = new JButton("Register new book");
+        JButton b4 = new JButton("Register new reader");
+        JButton b5 = new JButton("Show lended books");
+        JButton b6 = new JButton("Show best readers");
+        JButton b7 = new JButton("Show best books");
+        JButton b8 = new JButton("Lend a book");
+        JButton b9 = new JButton("Return a book");
+
+        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));        
+
+        p.add(b1);
+        p.add(b2);
+        p.add(b3);
+        p.add(b4);
+        p.add(b5);
+        p.add(b6);
+        p.add(b7);
+        p.add(b8);
+        p.add(b9);
+        p.add(l);
+        f.add(p);
+        
+        f.setSize(800,300);
+        // f.setLayout(null);
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Action to print lended books
+        b5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                library.printLendedBooks();
+            }
+        });
+        // Action for Best Readers
+        b6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                library.findBestReaders(Library.readerList);
+            }
+        });
+        // Action to print best books
+        b7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                library.findBestBooks(Library.bookList);
+            }
+        });
+
     }
     
 }
