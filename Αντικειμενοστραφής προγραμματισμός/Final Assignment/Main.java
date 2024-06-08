@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,7 @@ import java.awt.event.FocusListener;
 
 
 public class Main {
-
+    // Μέθοδος για να είναι τα γράμματα μέσα στα πεδία γκρι και να εξαφανίζονται όταν γίνεται κλικ επάνω τους
     public static void textField(JTextField textField, String textDisplay){
         textField.setText(textDisplay);
         textField.setForeground(Color.GRAY);
@@ -47,7 +48,7 @@ public class Main {
 
         JFrame f = new JFrame("Library Management");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setSize(2000,500);
+        f.setSize(2000,300);
         
         
         // Main panel
@@ -60,11 +61,11 @@ public class Main {
         
         
         // Reader Journal Button
-        // JPanel readerJournaJPanel = new JPanel(new GridLayout());
-        JPanel readerJournaJPanel = new JPanel(new GridBagLayout());
+        JPanel readerJournaJPanel = new JPanel(new GridLayout());
+        // JPanel readerJournaJPanel = new JPanel(new GridBagLayout());
         JButton b1 = new JButton("Show reader journal");
         JTextField i1 = new JTextField();
-        i1.setBounds(100,20,165,25);
+        // i1.setBounds(100,20,165,25);
         textField(i1,"Enter reader ΑΦΜ");
         readerJournaJPanel.add(i1);
         readerJournaJPanel.add(b1);
@@ -73,8 +74,8 @@ public class Main {
         
         
         // Book Journal Button
-        // JPanel bookJournaJPanel = new JPanel(new GridLayout());
-        JPanel bookJournaJPanel = new JPanel(new GridBagLayout());
+        JPanel bookJournaJPanel = new JPanel(new GridLayout());
+        // JPanel bookJournaJPanel = new JPanel(new GridBagLayout());
         JButton b2 = new JButton("Book Journal");
         JTextField i2 = new JTextField();
         textField(i2,"Enter book ISBN");
@@ -83,8 +84,8 @@ public class Main {
         buttonPanel.add(bookJournaJPanel);
         
         // Register new book panel
-        // JPanel registerBookJPanel = new JPanel(new GridLayout());
-        JPanel registerBookJPanel = new JPanel(new GridBagLayout());
+        JPanel registerBookJPanel = new JPanel(new GridLayout());
+        // JPanel registerBookJPanel = new JPanel(new GridBagLayout());
         JTextField isbnField = new JTextField();
         JTextField titleField = new JTextField();
         JTextField authorField = new JTextField();
@@ -94,7 +95,7 @@ public class Main {
         textField(titleField,"Enter book title");
         textField(authorField,"Enter book author");
         // textField(genreField,"Enter book genre");
-        textField(positionField,"Enter book position in library");
+        textField(positionField,"Enter book position");
         JButton b3 = new JButton("Register new book");
 
         String [] genres = {"Select genre","Literature", "History", "Education", "Computers"};
@@ -110,8 +111,8 @@ public class Main {
         
         // Register new reader
         JButton b4 = new JButton("Register new reader");
-        // JPanel registerReaderJPanel = new JPanel(new GridLayout());
-        JPanel registerReaderJPanel = new JPanel(new GridBagLayout());
+        JPanel registerReaderJPanel = new JPanel(new GridLayout());
+        // JPanel registerReaderJPanel = new JPanel(new GridBagLayout());
         JTextField afmField = new JTextField();
         JTextField nameField = new JTextField();
         JTextField ageField = new JTextField();
@@ -131,8 +132,8 @@ public class Main {
         
         // Lend a book
         JButton b5 = new JButton("Lend a book");
-        // JPanel lendBookJPanel = new JPanel(new GridLayout());
-        JPanel lendBookJPanel = new JPanel(new GridBagLayout());
+        JPanel lendBookJPanel = new JPanel(new GridLayout());
+        // JPanel lendBookJPanel = new JPanel(new GridBagLayout());
         JTextField bookISBNField = new JTextField();
         JTextField readerAfmField = new JTextField();
         JTextField readerLendingDateField = new JTextField(); 
@@ -147,8 +148,8 @@ public class Main {
 
         // Return a book
         JButton b6 = new JButton("Return a book");
-        // JPanel returnBookJPanel = new JPanel(new GridLayout());
-        JPanel returnBookJPanel = new JPanel(new GridBagLayout());
+        JPanel returnBookJPanel = new JPanel(new GridLayout());
+        // JPanel returnBookJPanel = new JPanel(new GridBagLayout());
         JTextField returnISBNField = new JTextField();
         JTextField returnDateField = new JTextField();
         textField(returnISBNField,"Enter book ISBN");
@@ -162,7 +163,7 @@ public class Main {
         
         
         // Υπόλοιπα κουμπιά
-        JPanel buttonPanelRest = new JPanel(); 
+        JPanel buttonPanelRest = new JPanel(new GridLayout()); 
         JButton b7 = new JButton("Show lended books");
         JButton b8 = new JButton("Show best readers");
         JButton b9 = new JButton("Show best books");
@@ -179,6 +180,7 @@ public class Main {
         
 
         JTextArea output = new JTextArea();
+        output.setFont(new Font("Verdana",Font.BOLD, 12));
         output.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(output);
         

@@ -17,6 +17,10 @@ public class Library {
                 return "Book is already registered..";
                 
             }
+
+            if (book.getPosition().equals(position)){
+                return "There is already a book in this position.";
+            }
         } 
         bookList.add(new Book(ISBN,title,author,genre,position));
         return "Book " + title + " registered succesfully";
@@ -125,12 +129,13 @@ public class Library {
             if (ISBN.equals(book.getISBN())){
                 found = true;
                 boolean recordFound = false;
+                output = book.getTitle() + "Journal";
                 for (LendingRecord lendingRecord : lendingRecordList){
                     if (lendingRecord.getBook().getISBN().equals(ISBN)){
                     recordFound = true;
-                    
-                    output += lendingRecord.getBook().getTitle() + "Lended by " + lendingRecord.getReader().getName() + " on " + lendingRecord.getLendingDate();
-                    
+                    if (lendingRecord.getReturnDate()==null){
+                    output += lendingRecord.getBook().getTitle() +"\n" + "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + lendingRecord.getLendingDate() +"\n" +  "Book has not been returned yet";
+                } else{output += lendingRecord.getBook().getTitle()+"\n" + "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + lendingRecord.getLendingDate() +"\n" +  "Return Date: " + lendingRecord.getReturnDate();}
                     } 
                 }  if(!recordFound){
                     output = "Book hasn't been lended yet";  
@@ -148,11 +153,13 @@ public class Library {
             if (afm.equals(reader.getAfm())){
                 found = true;
                 boolean recordFound = false;
+                output = reader.getName() + " book journal" + "\n\n";
                 for (LendingRecord lendingRecord : lendingRecordList){
                     if (lendingRecord.getReader().getAfm().equals(afm)){
                     recordFound = true;
-                    output += lendingRecord.getReader().getName() + " Lending Journal" + "\n" + lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + "\n" + lendingRecord.getLendingDate()  + "\n" + "Return Date: " + "\n" + lendingRecord.getReturnDate();
-                    
+                    if (lendingRecord.getReturnDate()==null){
+                    output += "Book Title: " + lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + lendingRecord.getLendingDate()  + "\n" + "Return Date: Book has not been returned yet." ;
+                    } else{output += lendingRecord.getReader().getName() + " Lending Journal" + "\n" + lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + "\n" + lendingRecord.getLendingDate()  + "\n" + "Return Date: " + "\n" + lendingRecord.getReturnDate();}
                     } 
                 }  if(!recordFound){
                     output =  "Reader hasn't lended a book yet";  
