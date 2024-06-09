@@ -198,7 +198,11 @@ public class Main {
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 String userInput = i1.getText();
+                if (userInput.equals("Enter reader ΑΦΜ")){
+                    output.setText("Please enter a reader ΑΦΜ");
+                }else{
                 output.setText(library.printLendReaderJournal(userInput));
+                }
             }
         });
 
@@ -206,7 +210,10 @@ public class Main {
         b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 String bookISBN = i2.getText();
-                output.setText(library.lendBookJournal(bookISBN));
+                if (bookISBN.equals("Enter book ISBN")){
+                    output.setText("Please enter a book ISBN");
+                }else{
+                output.setText(library.lendBookJournal(bookISBN));}
             }
         });
 
@@ -224,7 +231,9 @@ public class Main {
                     output.setText("All fields must be filled");
                 } else{
                     if (genre.equals("Select genre")==false){
-                output.setText(library.addBook(isbn,title,author,genre,position)); 
+                        if (isbn.equals("Enter book ISBN")||title.equals("Enter book title")||author.equals("Enter book author")||position.equals("Enter book position")){
+                output.setText("Please enter all values."); 
+            }else{output.setText(library.addBook(isbn,title,author,genre,position));}
                     } else {output.setText("Please select a genre");}
                 }
             }
@@ -245,8 +254,11 @@ public class Main {
                 try{
                 if (category.equals("Select student category")==false){
                 int age = Integer.parseInt(ageText);
+                if (afm.equals("Enter reader ΑΦΜ")||name.equals("Enter reader name")){
+                    output.setText("Please enter all values");
+                } else{
                 String result = library.addReader(afm,name,age,category);
-                output.setText(result); 
+                output.setText(result); }
                 } else {output.setText("Please select a student category");}
                 } catch (NumberFormatException ex){
                     output.setText("Please enter a valid age");
@@ -266,8 +278,11 @@ public class Main {
                 if (ISBN.isEmpty()||afm.isEmpty()||lendingDate.isEmpty()){
                     output.setText("All fields must be filled");
                 } 
+                if (ISBN.equals("Enter book ISBN")||afm.equals("Enter reader ΑΦΜ")||lendingDate.equals("Enter lending date")){
+                    output.setText("Please enter all values");
+                }else{
                 String result = library.lendBook(ISBN, afm, lendingDate);
-                output.setText(result);
+                output.setText(result);}
 
             }
         });
@@ -281,8 +296,12 @@ public class Main {
                 if (ISBN.isEmpty()||returnDate.isEmpty()){
                     output.setText("All fields must be filled");
                 } 
+                if (ISBN.equals("Enter book ISBN")||returnDate.equals("Enter return date")){
+                    output.setText("Please enter all values.");
+                }else{
                 String result = library.returnBook(ISBN, returnDate);
                 output.setText(result);
+                }
             }
         });
 
