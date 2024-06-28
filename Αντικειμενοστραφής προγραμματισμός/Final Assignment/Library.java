@@ -1,10 +1,11 @@
 import java.util.*;
+import java.text.SimpleDateFormat;
 
 
 
 public class Library {
 
-
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     static ArrayList<Book> bookList = new ArrayList<Book>();
     static ArrayList<Reader> readerList = new ArrayList<Reader>();
     ArrayList<Book> lendedBookList = new ArrayList<Book>();
@@ -39,7 +40,7 @@ public class Library {
     }
       
 
-    public String lendBook(String ISBN, String afm, String lendingDate){
+    public String lendBook(String ISBN, String afm, Date lendingDate){
         Book bookToLend = null;
 
         for (Book book : bookList){
@@ -81,7 +82,7 @@ public class Library {
     }
 
     
-    public String returnBook(String ISBN, String returnDate){
+    public String returnBook(String ISBN, Date returnDate){
         Book bookToReturn = null;
         for (Book book : lendedBookList){
             if (ISBN.equals(book.getISBN())){
@@ -96,9 +97,15 @@ public class Library {
         }
         for (LendingRecord lendingRecord : lendingRecordList){
             if (lendingRecord.getBook().getISBN().equals(ISBN) && lendingRecord.getReturnDate()==null){
-                lendingRecord.setReturnDate(returnDate);
-                lendedBookList.remove(bookToReturn);
-                return bookToReturn.getTitle() + " returned succesfully..." ;
+                Date lendingDate = lendingRecord.getLendingDate();
+                if (returnDate.after(lendingDate)){
+                    lendingRecord.setReturnDate(returnDate);
+                    lendedBookList.remove(bookToReturn);
+                    return bookToReturn.getTitle() + " returned succesfully..." ;
+                } else{
+                    return "Return date must be later than lending date";
+                }
+                
                 
             }
         } return "Book not found in lended books";
@@ -129,13 +136,13 @@ public class Library {
             if (ISBN.equals(book.getISBN())){
                 found = true;
                 boolean recordFound = false;
-                output = book.getTitle() + "Journal";
+                output = book.getTitle() + " Journal" + "\n";
                 for (LendingRecord lendingRecord : lendingRecordList){
                     if (lendingRecord.getBook().getISBN().equals(ISBN)){
                     recordFound = true;
                     if (lendingRecord.getReturnDate()==null){
-                    output += lendingRecord.getBook().getTitle() +"\n" + "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + lendingRecord.getLendingDate() +"\n" +  "Book has not been returned yet";
-                } else{output += lendingRecord.getBook().getTitle()+"\n" + "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + lendingRecord.getLendingDate() +"\n" +  "Return Date: " + lendingRecord.getReturnDate();}
+                    output += "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + dateFormat.format(lendingRecord.getLendingDate()) +"\n" +  "Book has not been returned yet";
+                } else{output += "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + dateFormat.format(lendingRecord.getLendingDate()) +"\n" +  "Return Date: " + dateFormat.format(lendingRecord.getReturnDate());}
                     } 
                 }  if(!recordFound){
                     output = "Book hasn't been lended yet";  
@@ -158,13 +165,13 @@ public class Library {
                     if (lendingRecord.getReader().getAfm().equals(afm)){
                     recordFound = true;
                     if (lendingRecord.getReturnDate()==null){
-                    output += "Book Title: " + lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + lendingRecord.getLendingDate()  + "\n" + "Return Date: Book has not been returned yet." ;
-                    } else{output += lendingRecord.getReader().getName() + " Lending Journal" + "\n" + lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + "\n" + lendingRecord.getLendingDate()  + "\n" + "Return Date: " + "\n" + lendingRecord.getReturnDate();}
+                    output += "Book Title: " + lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + dateFormat.format(lendingRecord.getLendingDate())  + "\n" + "Return Date: Book has not been returned yet." + "\n" + "\n" ;
+                    } else{output += "Book Title: " + lendingRecord.getBook().getTitle() + "\n"+"Lending Date: " + "\n" + dateFormat.format(lendingRecord.getLendingDate())  + "\n" + "Return Date: " + "\n" + dateFormat.format(lendingRecord.getReturnDate()) + "\n" + "\n";}
                     } 
                 }  if(!recordFound){
                     output =  "Reader hasn't lended a book yet";  
                     } break;
-            }      //Να βάλω πότε δανείστηκε και από ποιον μάλλον από το lendingRecord
+            }      
         } if (!found){
             output =  "Reader not found...";
         } return output;
@@ -242,5 +249,4 @@ public class Library {
             }return output;
     } 
 
-    // Να φτιάξω print All gia vivlia
 }

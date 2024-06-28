@@ -57,6 +57,6 @@ public class Reader{
 
     @Override
     public String toString(){
-        return "AFM: " + afm + "\n" + "Name: " + name + "\n" + "Age " + age + "\n" + "Category: " + category + "\n";
+        return "AFM: " + afm + "\n" + "Name: " + name + "\n" + "Age " + age + "\n" + "Category: " + category + "\n" + "Books Lended: " + readerLendCount+ "\n";
     }
 }

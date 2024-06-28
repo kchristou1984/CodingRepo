@@ -1,9 +1,10 @@
 import javax.swing.*;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,11 +17,14 @@ import java.awt.event.FocusListener;
 
 
 public class Main {
+
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
     // Μέθοδος για να είναι τα γράμματα μέσα στα πεδία γκρι και να εξαφανίζονται όταν γίνεται κλικ επάνω τους
     public static void textField(JTextField textField, String textDisplay){
-        textField.setText(textDisplay);
-        textField.setForeground(Color.GRAY);
-        textField.addFocusListener(new FocusListener() {
+        textField.setText(textDisplay); 
+        textField.setForeground(Color.GRAY); //To χρώμα είναι αρχικα γκρι
+        textField.addFocusListener(new FocusListener() { //οταν γίνεται κλικ το κείμενο εξαφανίζεται (γίνεται "") και τα γράμματα είναι μαύρα
             @Override
             public void focusGained(FocusEvent e){
                 if (textField.getText().equals(textDisplay)){
@@ -30,7 +34,7 @@ public class Main {
             }
 
             @Override
-            public void focusLost(FocusEvent e){
+            public void focusLost(FocusEvent e){ //όταν κλικάρει ο χρήστης αλλού, επανεμφανίζεται το αρχικό κείμενο με γκρι γράμματα)
                 if (textField.getText().equals("")){
                     textField.setText(textDisplay);
                     textField.setForeground(Color.GRAY);
@@ -62,10 +66,10 @@ public class Main {
         
         // Reader Journal Button
         JPanel readerJournaJPanel = new JPanel(new GridLayout());
-        // JPanel readerJournaJPanel = new JPanel(new GridBagLayout());
+        
         JButton b1 = new JButton("Show reader journal");
         JTextField i1 = new JTextField();
-        // i1.setBounds(100,20,165,25);
+        
         textField(i1,"Enter reader ΑΦΜ");
         readerJournaJPanel.add(i1);
         readerJournaJPanel.add(b1);
@@ -75,7 +79,7 @@ public class Main {
         
         // Book Journal Button
         JPanel bookJournaJPanel = new JPanel(new GridLayout());
-        // JPanel bookJournaJPanel = new JPanel(new GridBagLayout());
+        
         JButton b2 = new JButton("Book Journal");
         JTextField i2 = new JTextField();
         textField(i2,"Enter book ISBN");
@@ -85,16 +89,16 @@ public class Main {
         
         // Register new book panel
         JPanel registerBookJPanel = new JPanel(new GridLayout());
-        // JPanel registerBookJPanel = new JPanel(new GridBagLayout());
+        
         JTextField isbnField = new JTextField();
         JTextField titleField = new JTextField();
         JTextField authorField = new JTextField();
-        // JTextField genreField = new JTextField();
+        
         JTextField positionField = new JTextField();
         textField(isbnField,"Enter book ISBN");
         textField(titleField,"Enter book title");
         textField(authorField,"Enter book author");
-        // textField(genreField,"Enter book genre");
+        
         textField(positionField,"Enter book position");
         JButton b3 = new JButton("Register new book");
 
@@ -112,7 +116,7 @@ public class Main {
         // Register new reader
         JButton b4 = new JButton("Register new reader");
         JPanel registerReaderJPanel = new JPanel(new GridLayout());
-        // JPanel registerReaderJPanel = new JPanel(new GridBagLayout());
+        
         JTextField afmField = new JTextField();
         JTextField nameField = new JTextField();
         JTextField ageField = new JTextField();
@@ -133,7 +137,7 @@ public class Main {
         // Lend a book
         JButton b5 = new JButton("Lend a book");
         JPanel lendBookJPanel = new JPanel(new GridLayout());
-        // JPanel lendBookJPanel = new JPanel(new GridBagLayout());
+        
         JTextField bookISBNField = new JTextField();
         JTextField readerAfmField = new JTextField();
         JTextField readerLendingDateField = new JTextField(); 
@@ -149,7 +153,7 @@ public class Main {
         // Return a book
         JButton b6 = new JButton("Return a book");
         JPanel returnBookJPanel = new JPanel(new GridLayout());
-        // JPanel returnBookJPanel = new JPanel(new GridBagLayout());
+        
         JTextField returnISBNField = new JTextField();
         JTextField returnDateField = new JTextField();
         textField(returnISBNField,"Enter book ISBN");
@@ -186,9 +190,9 @@ public class Main {
         
         mainPanel.add(buttonPanel, BorderLayout.WEST);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
-        // mainPanel.add(buttonPanelRest,BorderLayout.SOUTH);
+        
         f.add(mainPanel);
-        // f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -223,7 +227,7 @@ public class Main {
                 String isbn = isbnField.getText();
                 String title = titleField.getText();
                 String author = authorField.getText();
-                // String genre = genreField.getText();
+                
                 String genre = (String) genreBox.getSelectedItem();
                 String position = positionField.getText();
 
@@ -274,16 +278,27 @@ public class Main {
             public void actionPerformed(ActionEvent e){
                 String ISBN = bookISBNField.getText();
                 String afm = readerAfmField.getText();
-                String lendingDate = readerLendingDateField.getText();
-                if (ISBN.isEmpty()||afm.isEmpty()||lendingDate.isEmpty()){
+                String lendingDateText = readerLendingDateField.getText();
+        
+                if (ISBN.isEmpty()||afm.isEmpty()||lendingDateText.isEmpty()){
                     output.setText("All fields must be filled");
+                    return;
                 } 
-                if (ISBN.equals("Enter book ISBN")||afm.equals("Enter reader ΑΦΜ")||lendingDate.equals("Enter lending date")){
-                    output.setText("Please enter all values");
-                }else{
-                String result = library.lendBook(ISBN, afm, lendingDate);
-                output.setText(result);}
 
+                if (ISBN.equals("Enter book ISBN")||afm.equals("Enter reader ΑΦΜ")||lendingDateText.equals("Enter lending date")){
+                    output.setText("Please enter all values");
+                }
+                try{
+                    Date lendingDate = dateFormat.parse(lendingDateText);
+                    String result = library.lendBook(ISBN, afm, lendingDate);
+                    output.setText(result);
+                } catch (Exception ex){
+                    output.setText("Please enter a valid date in the format dd-MM-yyyy");
+                }
+                ;
+
+                
+                
             }
         });
 
@@ -292,16 +307,23 @@ public class Main {
         b6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 String ISBN = returnISBNField.getText();
-                String returnDate = returnDateField.getText();
-                if (ISBN.isEmpty()||returnDate.isEmpty()){
+                String returnDateText = returnDateField.getText();
+
+                if (ISBN.isEmpty()||returnDateText.isEmpty()){
                     output.setText("All fields must be filled");
                 } 
-                if (ISBN.equals("Enter book ISBN")||returnDate.equals("Enter return date")){
+                if (ISBN.equals("Enter book ISBN")||returnDateText.equals("Enter return date")){
                     output.setText("Please enter all values.");
-                }else{
-                String result = library.returnBook(ISBN, returnDate);
-                output.setText(result);
                 }
+                try{
+                    Date returnDate = dateFormat.parse(returnDateText);
+                    String result = library.returnBook(ISBN, returnDate);
+                    output.setText(result);
+                } catch (ParseException ex){
+                    output.setText("Please enter a valid date in the format dd-mm-yyyy");
+                }
+                
+                
             }
         });
 

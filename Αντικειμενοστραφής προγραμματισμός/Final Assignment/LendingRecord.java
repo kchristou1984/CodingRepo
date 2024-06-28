@@ -1,12 +1,12 @@
-// import java.util.ArrayList;
+import java.util.Date;
 
 public class LendingRecord {
     private Book book;
     private Reader reader;
-    private String lendingDate;
-    private String returnDate;
+    private Date lendingDate;
+    private Date returnDate;
 
-    public LendingRecord(Book book, Reader reader, String lendingDate){
+    public LendingRecord(Book book, Reader reader, Date lendingDate){
         this.book = book;
         this.reader = reader;
         this.lendingDate = lendingDate;
@@ -29,15 +29,15 @@ public class LendingRecord {
         return reader;
     }
 
-    public String getLendingDate() {
+    public Date getLendingDate() {
         return lendingDate;
     }
 
-    public String getReturnDate() {
+    public Date getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate){
+    public void setReturnDate(Date returnDate){
         this.returnDate = returnDate;
     }
 
