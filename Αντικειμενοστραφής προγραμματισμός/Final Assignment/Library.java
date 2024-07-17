@@ -141,8 +141,8 @@ public class Library {
                     if (lendingRecord.getBook().getISBN().equals(ISBN)){
                     recordFound = true;
                     if (lendingRecord.getReturnDate()==null){
-                    output += "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + dateFormat.format(lendingRecord.getLendingDate()) +"\n" +  "Book has not been returned yet";
-                } else{output += "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + dateFormat.format(lendingRecord.getLendingDate()) +"\n" +  "Return Date: " + dateFormat.format(lendingRecord.getReturnDate());}
+                    output += "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + dateFormat.format(lendingRecord.getLendingDate()) +"\n" +  "Book has not been returned yet" + "\n" + "\n";
+                } else{output += "Reader: " + lendingRecord.getReader().getName() + "\n" + "Lending Date: " + dateFormat.format(lendingRecord.getLendingDate()) +"\n" +  "Return Date: " + dateFormat.format(lendingRecord.getReturnDate())+ "\n"+ "\n";}
                     } 
                 }  if(!recordFound){
                     output = "Book hasn't been lended yet";  

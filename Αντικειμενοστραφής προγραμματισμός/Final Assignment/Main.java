@@ -102,6 +102,7 @@ public class Main {
         textField(positionField,"Enter book position");
         JButton b3 = new JButton("Register new book");
 
+        //Dropdown menu για τα είδη των βιβλίων
         String [] genres = {"Select genre","Literature", "History", "Education", "Computers"};
         JComboBox<String> genreBox = new JComboBox<>(genres);
 
@@ -121,8 +122,10 @@ public class Main {
         JTextField nameField = new JTextField();
         JTextField ageField = new JTextField();
 
-        String [] categories = {"Select student category","Student", "Other"};
-        JComboBox<String> categoryBox = new JComboBox<>(categories);      
+        // Dropdown menu για την κατηγορία αναγνωστών
+        String [] categories = {"Select reader category","Student", "Other"};
+        JComboBox<String> categoryBox = new JComboBox<>(categories); 
+
         textField(afmField,"Enter reader ΑΦΜ");
         textField(nameField,"Enter reader name");
         textField(ageField,"Enter reader's age");
@@ -256,14 +259,14 @@ public class Main {
                     output.setText("All fields must be filled");
                 } else{
                 try{
-                if (category.equals("Select student category")==false){
+                if (category.equals("Select reader category")==false){
                 int age = Integer.parseInt(ageText);
                 if (afm.equals("Enter reader ΑΦΜ")||name.equals("Enter reader name")){
                     output.setText("Please enter all values");
                 } else{
                 String result = library.addReader(afm,name,age,category);
                 output.setText(result); }
-                } else {output.setText("Please select a student category");}
+                } else {output.setText("Please select a reader category");}
                 } catch (NumberFormatException ex){
                     output.setText("Please enter a valid age");
                 }
@@ -368,4 +371,3 @@ public class Main {
 }
 
 
-// Να φτιάξω lending journal με iterate sto lendingrecordlist, ημερομηνία και να έιναι μοναδική η θέση που μπαίνει κάθε βιβλίο

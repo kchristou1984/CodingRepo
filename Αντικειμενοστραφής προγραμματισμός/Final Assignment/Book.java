@@ -6,9 +6,9 @@ public class Book {
     private String author;
     private String genre;
     private String position;
-    private int lendCount;
+    private int lendCount; //Μεταβλητή για την καταγραφή του πλήθους δανεισμού του βιβλίου
 
-    //Να προσθέσω και ιδιότητα για το count των δανεισμών σε κάθε βιβλίο τύπου int lendCount = 0 και να γίνεται +1 κάθε φορά που καλείται η lendBook()
+    
     public Book(String ISBN, String title, String author, String genre,String position){
         this.ISBN = ISBN;
         this.title = title;
@@ -61,7 +61,7 @@ public class Book {
     public int getLendCount(){
         return lendCount;
     }
-
+    //Μέθοδος που αυξάνει το μετρητή του δανεισμού ενός βιβλίου
     public void lendBook(){
         lendCount++;
     }
