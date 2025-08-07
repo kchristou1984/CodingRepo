@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Μεταβολίζειν Nutrition Tracker</string>
+    <string-array name="report_types">
+        <item>Ημερήσια</item>
+        <item>Εβδομαδιαία</item>
+        <item>Καθορισμένο διάστημα</item>
+    </string-array>
+
+</resources>

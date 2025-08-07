@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ημερομηνία:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Πρωινό -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Πρωινό"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/breakfast_input"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:hint="Πρωινό"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/breakfast_time"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Ώρα"
+                android:inputType="time"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+
+
+        <!-- Δεκατιανό -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Δεκατιανό"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/snack_input"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:hint="Δεκατιανό"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/snack_time"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Ώρα"
+                android:inputType="time"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Μεσημεριανό -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Μεσημεριανό"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/lunch_input"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:hint="Μεσημεριανό"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/lunchTime"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Ώρα"
+                android:inputType="time"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Απογευματινό -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Απογευματινό"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/afternoon_snack_input"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:hint="Απογευματινό"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/afternoonSnackTime"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Ώρα"
+                android:inputType="time"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Βραδινό -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Βραδινό"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/dinner_input"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:hint="Βραδινό"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/dinnerTime"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Ώρα"
+                android:inputType="time"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Άσκηση -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Άσκηση"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/exercise_input"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:hint="Είδος άσκησης"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/exerciseTime"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Ώρα"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <!-- Ύπνος -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ώρες Ύπνου"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/sleep_input"
+            android:hint="Ώρες Ύπνου"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Βάρος -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Βάρος (kg)"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/weight_input"
+            android:hint="Βάρος (kg)"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Κουμπί -->
+        <Button
+            android:id="@+id/save_button"
+            android:text="Αποθήκευση"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>
